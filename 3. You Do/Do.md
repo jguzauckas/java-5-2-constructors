@@ -1,3 +1,8 @@
 # You Do
 
-The `Lamp.java` file contains the incomplete class `Lamp`. Based on the descriptions, can you fill in the missing constructors and/or methods so that it will work as intended?
+In the `Teacher.java` file, make constructors for the following scenarios:
+- Default constructor.
+- Have title and name, but nothing else.
+- Have title, name, and subject, but nothing else.
+- Have subject and minimum and maxmimum grade level, but nothing else.
+- Have everything.
