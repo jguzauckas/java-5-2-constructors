@@ -46,19 +46,7 @@ It can be important to understand some of the inner workings of constructors to 
 
 The parameters in a constructor (i.e., `n`, `a`, and `h` from above) are **local variables** to the constructor, which means they only exist within the constructor, and cease existing once the constructor finishes. They are used to assign values passed in by the user to the instance variables for the object.
 
-These parameters follow a principle called **pass by value** in Java. What this means is, when I make an object calling the constructor with parameters, the values for those parameters are copied into the parameter variables `n`, `a`, and `h` instead of using the actual objects that could have been passed in. This actually creates a variety of behaviors depending on what we are passing in as parameters. For mutable objects or primitive types like our `int` `a` and `double` `h`, any information from the constructor call is actually copied to those variables, leaving the originals otherwise untouched. For immutable objects like `String` objects, the reference is copied to the parameter variable `n`, and so any changes through the variable `n` to the object would effect the original `String`. This is a very minute detail about how constructors work, but with immutable objects, this means that our new object could change the value of the immutable object from our constructor call in the future because it is using the same address. However, because changes to immutable objects make a new object (and therefore memory location), it wouldn't affect the original variable that the immutable object came from due to it keeping the old memory address. Consider this example:
-
-```java
-String outsideName = "Mr. G";
-
-Person person1 = new Person(outsideName, 25, 68.0);
-
-person1.setName("John");
-
-System.out.println(outsideName);
-```
-
-This will print `"Mr. G"` as the output, even though we modified the `String` withint he constructor, because the constructor passed the reference of the `outsideName` variable, but then replaced the memory location when it modified the object, without changing the memory location of `outsideName`. So when the `Person` object changes its name value, it would not modify what `outsideName` is looking at, resulting in the strange result.
+These parameters follow a principle called **pass by value** in Java. What this means is, when I make an object calling the constructor with parameters, the values for those parameters are copied into the parameter variables `n`, `a`, and `h` instead of using the actual objects that could have been passed in. This actually creates a variety of behaviors depending on what we are passing in as parameters. For immutable objects like `String` objects or primitive types like our `int` `a` and `double` `h`, any information from the constructor call is actually copied to those variables, leaving the originals otherwise untouched. For the immutable objects like `String` objects, the reference is copied to the parameter variable `n`, but any changes through the variable `n` to the object would create a new `String` at a new memory location that the original is completely unaware of.
 
 ---
 
